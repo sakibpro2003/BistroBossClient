@@ -1,8 +1,9 @@
+import Banner from "../assets/Components/Banner";
 
 const Home = () => {
     return (
         <div>
-            {/* <Navbar></Navbar> */}
+            <Banner></Banner>
         </div>
     );
 };
