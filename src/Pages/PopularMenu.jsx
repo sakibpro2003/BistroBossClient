@@ -11,7 +11,7 @@ const PopularMenu = () => {
 
             const popularMenu = data.filter(item=> item.category ==='popular');
             setMenu(popularMenu);
-            console.log(menu)
+            // console.log(menu)
             // setData(data1)
             // console.log(data1)
         })
