@@ -6,7 +6,7 @@ import SectionTitle from '../Shared/SectionTitle';
 import MenuCategory from '../Shared/MenuCategory';
 const Menu = () => {
     const [menu] = useMenu();
-    const dessert = menu.filter(item=> item.category ==='dessert');
+    const desserts = menu.filter(item=> item.category ==='dessert');
     const pizza = menu.filter(item=> item.category ==='pizza');
     const soup = menu.filter(item=> item.category ==='soup');
     const salad = menu.filter(item=> item.category ==='salad');
@@ -20,6 +20,14 @@ const Menu = () => {
             <Cover></Cover>
             <SectionTitle title={'Todays Offer'} subTitle={'---Dont Miss---'}></SectionTitle>
             <MenuCategory items={offered}></MenuCategory>
+            <Cover title={'Dessert'}></Cover>
+            <MenuCategory items={desserts} ></MenuCategory>
+            <Cover title={'Pizza'}></Cover>
+            <MenuCategory items={pizza} ></MenuCategory>
+            <Cover title={'salad'}></Cover>
+            <MenuCategory items={salad} ></MenuCategory>
+            <Cover title={'Soup'}></Cover>
+            <MenuCategory items={soup} ></MenuCategory>
         
             
         </div>
