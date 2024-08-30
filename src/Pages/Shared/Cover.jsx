@@ -1,5 +1,6 @@
 import { Parallax, Background } from 'react-parallax';
-const Cover = ({title}) => {
+// import cover from "../../assets/shop/banner2.jpg";
+const Cover = ({title,coverImg}) => {
     return (
         <Parallax
         blur={{ min: -50, max: 50 }}
@@ -10,7 +11,7 @@ const Cover = ({title}) => {
         <div
   className="hero h-[750px]"
   style={{
-    backgroundImage: "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
+    backgroundImage: `url(${coverImg})`,
   }}>
   <div className="hero-overlay bg-opacity-60"></div>
   <div className="hero-content text-neutral-content text-center">
