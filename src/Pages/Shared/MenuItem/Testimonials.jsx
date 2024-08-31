@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import  { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
@@ -9,14 +9,11 @@ import "@smastrom/react-rating/style.css";
 const Testimonials = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("review.json")
+    fetch(`${import.meta.env.VITE_ACCESS_URL}/reviews`)
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data)
         setReviews(data);
-        console.log(reviews);
       });
-    // .then(err=>console.log(err))
   }, []);
   return (
     <div>

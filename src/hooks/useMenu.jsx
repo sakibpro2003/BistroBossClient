@@ -4,7 +4,7 @@ const useMenu = () =>{
     const [menu, setMenu] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(()=>{
-        fetch("menu.json")
+        fetch(`${import.meta.env.VITE_ACCESS_URL}/menu`)
             .then(res=>res.json())
             .then(data=>{
             // const popularMenu = data.filter(item=> item.category ==='popular');

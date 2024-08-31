@@ -1,4 +1,3 @@
-import Cover from "./Cover";
 import MenuItem from "./MenuItem/MenuItem";
 
 const MenuCategory = ({items}) => {
