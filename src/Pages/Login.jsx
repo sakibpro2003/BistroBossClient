@@ -1,9 +1,24 @@
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
+
 const Login = () => {
+  const navigate = useNavigate();
+  const {signIn}= useContext(AuthContext);
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(email, password);
+    signIn(email, password)
+    .then(user=>{
+      console.log(user);
+      navigate("/");
+      
+    })
+    .then(error=>{
+      console.log(error)
+    })
   }
   return (
     <div className="hero bg-base-200 min-h-screen">
@@ -44,6 +59,9 @@ const Login = () => {
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
                   Forgot password?
+                </a>
+                <a href="/register" className="label-text-alt link link-hover">
+                  Register
                 </a>
               </label>
             </div>
