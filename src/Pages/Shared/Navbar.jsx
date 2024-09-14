@@ -82,6 +82,9 @@ const Navbar = () => {
               <Link to={"/register"}>register</Link>
             </li>
             <li>
+              <Link to={"/secret"}>sec</Link>
+            </li>
+            <li>
               <a>Settings</a>
             </li>
             
