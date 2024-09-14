@@ -1,5 +1,8 @@
 
 const FoodCard = ({item}) => {
+  const handleAddToCart=(food)=>{
+    console.log(food)
+  }
     // console.log(item)
     const {name,price,category,image,recipe } = item;
   return (
@@ -15,7 +18,7 @@ const FoodCard = ({item}) => {
         <p>{recipe}</p>
         <p className="font-bold">${price}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">{category}</button>
+          <button onClick={()=>handleAddToCart(item)} className="btn btn-primary">Add to Cart</button>
         </div>
       </div>
     </div>
