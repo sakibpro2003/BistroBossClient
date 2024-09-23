@@ -1,7 +1,10 @@
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
-import axiosSecure from "../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useCart from "../../hooks/useCart";
 const FoodCard = ({ item }) => {
+  const [,refetch] = useCart();
+  const axiosSecure = useAxiosSecure();
   const { name, price, category, image, recipe, _id } = item;
   const { user } = useAuth();
   const handleAddToCart = (item) => {
@@ -15,7 +18,11 @@ const FoodCard = ({ item }) => {
       };
       axiosSecure.post("/cart", cartItem).then((res) => {
         console.log(res.data);
-      });
+        refetch();
+      })
+      .catch((error) => {
+        console.error("There was an error!", error);
+    });
     }
   };
 
