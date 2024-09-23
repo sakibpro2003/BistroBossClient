@@ -1,6 +1,6 @@
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
-import { axiosSecure } from "../../hooks/useAxiosSecure";
+import axiosSecure from "../../hooks/useAxiosSecure";
 const FoodCard = ({ item }) => {
   const { name, price, category, image, recipe, _id } = item;
   const { user } = useAuth();
