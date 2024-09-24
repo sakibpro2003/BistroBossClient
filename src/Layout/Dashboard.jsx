@@ -1,14 +1,16 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaAd, FaCalendar, FaHome, FaShoppingCart } from "react-icons/fa";
+import useCart from "../hooks/useCart";
 
 const Dashboard = () => {
+    const [cart] = useCart();
   return (
     <div className="flex">
       <div className="w-64 min-h-screen bg-orange-400">
         <ul className="menu">
           <li>
             <NavLink to={"dashboard/cart"}>
-              <FaShoppingCart /> My Cart
+              <FaShoppingCart /> My Cart ({cart.length})
             </NavLink>
           </li>
           <li>
