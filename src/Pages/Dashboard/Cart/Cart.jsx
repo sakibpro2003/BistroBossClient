@@ -1,14 +1,28 @@
+import axios from "axios";
+// import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useCart from "../../../hooks/useCart";
 import { RiDeleteBinFill } from "react-icons/ri";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Cart = () => {
-  const [cart] = useCart();
+    const axiosSecure = useAxiosSecure();
+  const [cart,refetch] = useCart();
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+  const handleDelete =(id)=>{
+    console.log(id)
+    axiosSecure.delete(`/cartdelete/${id}`)
+    .then(res=>{
+        console.log(res.data)
+        refetch();
+        
+    })
+
+  }
   return (
     <div>
       <div className="flex justify-evenly">
-        <h2 className="text-6xl">Total item: {cart.length}</h2>
-        <h2 className="text-6xl">Total item: ${totalPrice}</h2>
+        <h2 className="text-3xl">Total item: {cart.length}</h2>
+        <h2 className="text-3xl">Total item: ${totalPrice}</h2>
         <button className="btn bg-orange-400">Pay</button>
       </div>
       <div className="overflow-x-auto">
@@ -45,7 +59,7 @@ const Cart = () => {
                 </td>
                 <td>${item.price}</td>
                 <th>
-                  <button className="btn bg-orange-400 p-4 btn-xs text-2xl">
+                  <button onClick={()=> handleDelete(item._id)} className="btn bg-orange-400 p-4 btn-xs text-2xl">
                     <RiDeleteBinFill></RiDeleteBinFill>
                   </button>
                 </th>
