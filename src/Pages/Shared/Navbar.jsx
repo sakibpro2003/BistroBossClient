@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import useCart from "../../hooks/useCart";
+// import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
   const {user,logOut} = useContext(AuthContext);
@@ -60,6 +61,10 @@ const Navbar = () => {
                 src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
               />
             </div>
+            <button>
+            <Link to={'dashboard/cart'}>Cart</Link>
+
+            </button>
           </div>
           <ul
             tabIndex={0}
