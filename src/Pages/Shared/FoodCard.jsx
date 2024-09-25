@@ -3,7 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useCart from "../../hooks/useCart";
 const FoodCard = ({ item }) => {
-  const [,refetch] = useCart();
+  const [, refetch] = useCart();
   const axiosSecure = useAxiosSecure();
   const { name, price, category, image, recipe, _id } = item;
   const { user } = useAuth();
@@ -14,15 +14,17 @@ const FoodCard = ({ item }) => {
         email: user?.email,
         image,
         price,
-        name
+        name,
       };
-      axiosSecure.post("/cart", cartItem).then((res) => {
-        console.log(res.data);
-        refetch();
-      })
-      .catch((error) => {
-        console.error("There was an error!", error);
-    });
+      axiosSecure
+        .post("/cart", cartItem)
+        .then((res) => {
+          console.log(res.data);
+          refetch();
+        })
+        .catch((error) => {
+          console.error("There was an error!", error);
+        });
     }
   };
 

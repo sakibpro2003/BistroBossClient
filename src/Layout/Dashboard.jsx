@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaAd, FaCalendar, FaEnvelope, FaHome, FaList, FaShoppingCart } from "react-icons/fa";
+import { FaAd, FaBook, FaCalendar, FaEnvelope, FaHome, FaList, FaShoppingCart, FaUser, FaUtensilSpoon } from "react-icons/fa";
 import useCart from "../hooks/useCart";
 
 const Dashboard = () => {
@@ -12,54 +12,55 @@ const Dashboard = () => {
         <ul className="menu">
          {
             isAdmin ? <>
-             <li>
-            <NavLink to={"dashboard/cart"}>
-              <FaShoppingCart /> My Cart ({cart.length})
+             
+          <li>
+            <NavLink to={"userHome"}>
+              <FaHome /> Admin Home
             </NavLink>
           </li>
           <li>
-            <NavLink to={"dashboard/userHome"}>
-              <FaHome /> User Home
+            <NavLink to={"reservation"}>
+              <FaUtensilSpoon /> Add Items
             </NavLink>
           </li>
           <li>
-            <NavLink to={"dashboard/reservation"}>
-              <FaCalendar /> Reservation
+            <NavLink to={"review"}>
+              <FaAd /> Manage Items
             </NavLink>
           </li>
           <li>
-            <NavLink to={"dashboard/review"}>
-              <FaAd /> Add a Review
+            <NavLink to={"bookings"}>
+              <FaBook /> Manage Bookings
             </NavLink>
           </li>
           <li>
-            <NavLink to={"dashboard/bookings"}>
-              <FaAd /> Add a Bookings
+            <NavLink to={"users"}>
+              <FaUser /> All User
             </NavLink>
           </li>
             </>:<>
              <li>
-            <NavLink to={"dashboard/cart"}>
+            <NavLink to={"cart"}>
               <FaShoppingCart /> My Cart ({cart.length})
             </NavLink>
           </li>
           <li>
-            <NavLink to={"dashboard/userHome"}>
+            <NavLink to={"userHome"}>
               <FaHome /> User Home
             </NavLink>
           </li>
           <li>
-            <NavLink to={"dashboard/reservation"}>
+            <NavLink to={"reservation"}>
               <FaCalendar /> Reservation
             </NavLink>
           </li>
           <li>
-            <NavLink to={"dashboard/review"}>
+            <NavLink to={"review"}>
               <FaAd /> Add a Review
             </NavLink>
           </li>
           <li>
-            <NavLink to={"dashboard/bookings"}>
+            <NavLink to={"bookings"}>
               <FaAd /> Add a Bookings
             </NavLink>
           </li>
@@ -71,17 +72,17 @@ const Dashboard = () => {
           <div className="divider"></div>
 
           <li>
-            <NavLink to={"dashboard/home"}>
+            <NavLink to={"home"}>
               <FaHome /> Home
             </NavLink>
           </li>
           <li>
-            <NavLink to={"dashboard/home"}>
+            <NavLink to={"home"}>
               <FaList /> Menu
             </NavLink>
           </li>
           <li>
-            <NavLink to={"dashboard/home"}>
+            <NavLink to={"home"}>
               <FaEnvelope /> Contact
             </NavLink>
           </li>
