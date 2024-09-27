@@ -4,12 +4,13 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { FaUser } from "react-icons/fa";
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
+  console.log(localStorage.getItem('access-token'))
+
 
   const { refetch, data: user = [] } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosSecure.get("/user");
-      console.log(res.data);
       return res.data;
     },
   });
