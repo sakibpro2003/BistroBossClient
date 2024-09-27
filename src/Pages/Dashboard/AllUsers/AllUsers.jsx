@@ -5,7 +5,7 @@ import { FaUser } from "react-icons/fa";
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
 
-  const {refetch, data: user = [] } = useQuery({
+  const { refetch, data: user = [] } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosSecure.get("/user");
@@ -13,14 +13,24 @@ const AllUsers = () => {
       return res.data;
     },
   });
-  const handleDeleteUser=(id)=>{
+  const handleMakeAdmin = (id)=>{
     console.log(id)
-    axiosSecure.delete(`/deleteuser/${id}`)
+    axiosSecure.patch(`/user/admin/${id}`)
     .then(res=>{
-        console.log(res.data)
-        refetch()
+      console.log(res)
+      if(res.data.acknowledged == true){
+        console.log("done")
+        refetch();
+      }
     })
   }
+  const handleDeleteUser = (id) => {
+    console.log(id);
+    axiosSecure.delete(`/deleteuser/${id}`).then((res) => {
+      console.log(res.data);
+      refetch();
+    });
+  };
   return (
     <div>
       <div className="flex justify-evenly">
@@ -41,16 +51,28 @@ const AllUsers = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            {
-                user.map((singleUser,index)=><tr key={singleUser._id} className="bg-base-200">
-                    <th>{index+1}</th>
-                    <td>{singleUser.fullName}</td>
-                    <td>{singleUser.email}</td>
-                    <td><button className="btn bg-orange-400"><FaUser ></FaUser></button></td>
-                    <td><button onClick={()=>handleDeleteUser(singleUser._id)} className="btn bg-orange-400">X</button></td>
-                  </tr>)
-            }
-            
+            {user.map((singleUser, index) => (
+              <tr key={singleUser._id} className="bg-base-200">
+                <th>{index + 1}</th>
+                <td>{singleUser.fullName}</td>
+                <td>{singleUser.email}</td>
+                <td>
+                  <button onClick={()=>handleMakeAdmin(singleUser._id)} className="btn bg-orange-400">
+                    {
+                      singleUser.role ? <>admin</>:<><FaUser></FaUser></>
+                    }
+                  </button>
+                </td>
+                <td>
+                  <button
+                    onClick={() => handleDeleteUser(singleUser._id)}
+                    className="btn bg-orange-400"
+                  >
+                    X
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
