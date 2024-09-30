@@ -17,7 +17,7 @@ const Register = () => {
 
     signUp(email, password)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
         logOut();
       })
       .then((error) => {
@@ -29,7 +29,7 @@ const Register = () => {
     };
     // console.log("user object",userInfo)
     axios.post("http://localhost:5000/userdata", userInfo).then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
     });
   };
   return (

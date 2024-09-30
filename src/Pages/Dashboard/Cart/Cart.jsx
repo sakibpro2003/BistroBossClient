@@ -9,7 +9,7 @@ const Cart = () => {
   const [cart,refetch] = useCart();
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
   const handleDelete =(id)=>{
-    console.log(id)
+    // console.log(id)
     axiosSecure.delete(`/cartdelete/${id}`)
     .then(res=>{
         console.log(res.data)

@@ -4,7 +4,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { FaUser } from "react-icons/fa";
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
-  console.log(localStorage.getItem('access-token'))
+  // console.log(localStorage.getItem('access-token'))
 
 
   const { refetch, data: user = [] } = useQuery({
@@ -15,20 +15,20 @@ const AllUsers = () => {
     },
   });
   const handleMakeAdmin = (id)=>{
-    console.log(id)
+    // console.log(id)
     axiosSecure.patch(`/user/admin/${id}`)
     .then(res=>{
-      console.log(res)
+      // console.log(res)
       if(res.data.acknowledged == true){
-        console.log("done")
+        // console.log("done")
         refetch();
       }
     })
   }
   const handleDeleteUser = (id) => {
-    console.log(id);
+    // console.log(id);
     axiosSecure.delete(`/deleteuser/${id}`).then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       refetch();
     });
   };
