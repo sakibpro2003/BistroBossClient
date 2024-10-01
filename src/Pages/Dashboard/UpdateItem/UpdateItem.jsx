@@ -1,14 +1,10 @@
 import { useLoaderData } from "react-router-dom";
-import useMenu from "../../../hooks/useMenu";
 import axios from "axios";
 
 const UpdateItem = () => {
   const item = useLoaderData();
-  // console.log(item, item._id);
-  // console.log(JSON.stringify(data))
-  // useMenu();
-  const handleUpdate = (e) => {
 
+  const handleUpdate = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const price = e.target.price.value;
@@ -19,9 +15,11 @@ const UpdateItem = () => {
       category: category,
     };
     const update = async (data) => {
-      axios.patch(`http://localhost:5000/menu/${item._id}`, updateObj).then((response) => {
-        console.log(response);
-      });
+      axios
+        .patch(`http://localhost:5000/menu/${item._id}`, updateObj)
+        .then((response) => {
+          console.log(response);
+        });
 
       return data;
     };
