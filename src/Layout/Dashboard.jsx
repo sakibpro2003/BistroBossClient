@@ -26,7 +26,7 @@ const Dashboard = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to={"review"}>
+            <NavLink to={"manageitems"}>
               <FaAd /> Manage Items
             </NavLink>
           </li>
