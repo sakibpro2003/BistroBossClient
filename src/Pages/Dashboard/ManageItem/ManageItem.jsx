@@ -1,27 +1,15 @@
-import { Link ,useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useMenu from "../../../hooks/useMenu";
-// import { useEffect } from "react";
-// import axios from "axios";
+
 
 const ManageItem = () => {
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
 
   const [menu] = useMenu();
-  // const getData = ()=>{
-  //   useEffect((() => {
-  //     const {data} = async()=>{
-  //       axios.get(`http://localhost:5000/menuitem/${id}`)
-  //       .then(res => {
-  //         console.log(res);
-  //       })
-  //       getData();
-  //     }
-  //   },[]))
-  // }
+  
   const handleDelete = async (id) => {
-    // console.log(id)
     const res = await axiosSecure.delete(`/menu/delete/${id}`);
     console.log(res.data);
     if (res.data.deletedCount > 0) {
@@ -30,7 +18,6 @@ const ManageItem = () => {
   };
 
   const handleUpdate = (id) => {
-    // console.log(id)
     navigate(`/dashboard/item/${id}`);
   };
   return (
