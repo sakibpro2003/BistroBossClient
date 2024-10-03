@@ -15,6 +15,7 @@ const useAdmin = () => {
 
             // temporaryly all user are set admin!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             return user?.email;
+            // return "sa@eam.com"
         }
     })
     return [isAdmin,isAdminLoading];

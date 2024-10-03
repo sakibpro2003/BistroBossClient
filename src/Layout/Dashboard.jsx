@@ -5,8 +5,11 @@ import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
 
-  const [isAdmin] = useAdmin();
-  // const isAdmin = true;
+
+  //for admin turn this on-----------------------------
+  // const [isAdmin] = useAdmin();
+  //for normal user turn this on----------------------------
+  const isAdmin = false;
     const [cart] = useCart();
   return (
     <div className="flex">

@@ -2,6 +2,7 @@
 import useCart from "../../../hooks/useCart";
 import { RiDeleteBinFill } from "react-icons/ri";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const axiosSecure = useAxiosSecure();
@@ -19,7 +20,7 @@ const Cart = () => {
       <div className="flex justify-evenly">
         <h2 className="text-3xl">Total item: {cart.length}</h2>
         <h2 className="text-3xl">Total item: ${totalPrice}</h2>
-        <button className="btn bg-orange-400">Pay</button>
+        <Link to={'/dashboard/payment'} className="btn bg-orange-400">Pay</Link>
       </div>
       <div className="overflow-x-auto">
         <table className="table">
