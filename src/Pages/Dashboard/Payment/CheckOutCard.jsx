@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useCart from "../../../hooks/useCart";
 import useAuth from "../../../hooks/useAuth";
+import axios from "axios";
 
 const CheckOutCard = () => {
   const { user } = useAuth();
   const [clientSecret, setClientSecret] = useState("");
   const [stripePaymentId, setStripePaymentId] = useState();
-  const [cart] = useCart();
+  const [cart, refetch] = useCart();
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
 
   const axiosSecure = useAxiosSecure();
@@ -62,9 +63,21 @@ const CheckOutCard = () => {
       console.log("payment eror", payment_error);
     } else {
       console.log("payment intent", paymentIntent);
-      if(paymentIntent.status === "succeeded"){
-        console.log("ok payment")
+      if (paymentIntent.status === "succeeded") {
+        console.log("ok payment");
         setStripePaymentId(paymentIntent.id);
+        const payment = {
+          email: user?.email,
+          price: totalPrice,
+          date: new Date(), // date should be converted in UTC
+          cartIds: cart.map((item) => item._id),
+          menuItemIds: cart.map((item) => item.menuId),
+          status: "pending",
+        };
+        console.log(payment);
+        const res = await axios.post("http://localhost:5000/payment", payment);
+        console.log("payment client", res.data);
+        refetch();
       }
     }
   };
