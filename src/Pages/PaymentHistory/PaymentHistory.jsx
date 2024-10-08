@@ -1,42 +1,48 @@
+import axios from "axios";
+import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+
 const PaymentHistory = () => {
-    
+  const { user } = useAuth();
+  console.log(user?.email);
+  const axiosSecure = useAxiosSecure();
+  const { data: payments=[] } = useQuery({
+    queryKey: ["payments", user?.email],
+
+    queryFn: async () => {
+      const res = await axios.get(`http://localhost:5000/payments/${user?.email}`);
+      console.log(res.data);
+      return res.data;
+    },
+  });
   return (
     <div>
-      payment history
+      <h2 className="text-3xl text-center mb-10">Payment History</h2>
       <div>
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
             <thead>
-              <tr>
-                <th></th>
+              <tr className="bg-base-200">
+                <th>#</th>
                 <th>Name</th>
                 <th>Job</th>
-                <th>Favorite Color</th>
+                <th>Price</th>
               </tr>
             </thead>
             <tbody>
               {/* row 1 */}
-              <tr className="bg-base-200">
-                <th>1</th>
-                <td>Cy Ganderton</td>
-                <td>Quality Control Specialist</td>
-                <td>Blue</td>
-              </tr>
-              {/* row 2 */}
-              <tr>
-                <th>2</th>
-                <td>Hart Hagerty</td>
-                <td>Desktop Support Technician</td>
-                <td>Purple</td>
-              </tr>
-              {/* row 3 */}
-              <tr>
-                <th>3</th>
-                <td>Brice Swyre</td>
-                <td>Tax Accountant</td>
-                <td>Red</td>
-              </tr>
+              {
+                payments.map((payment,index) => (<tr key={payment._id} className="">
+                  <th>{index+1}</th>
+                  <td>{payment.status}</td>
+                  {/* TODO: here id should be transaction id of stripe payment */}
+                  <td>{payment._id}</td>
+                  <td>{payment.price}</td>
+                </tr>))
+              }
+             
             </tbody>
           </table>
         </div>

@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useCart from "../../../hooks/useCart";
 import useAuth from "../../../hooks/useAuth";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const CheckOutCard = () => {
   const { user } = useAuth();
@@ -11,6 +12,7 @@ const CheckOutCard = () => {
   const [stripePaymentId, setStripePaymentId] = useState();
   const [cart, refetch] = useCart();
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+  const navigate = useNavigate();
 
   const axiosSecure = useAxiosSecure();
   useEffect(() => {
@@ -78,6 +80,7 @@ const CheckOutCard = () => {
         const res = await axios.post("http://localhost:5000/payment", payment);
         console.log("payment client", res.data);
         refetch();
+        navigate('/dashboard/paymentHistory')
       }
     }
   };
