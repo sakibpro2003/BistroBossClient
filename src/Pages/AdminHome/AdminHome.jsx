@@ -8,9 +8,10 @@ const AdminHome = () => {
   const {data: stats}= useQuery({
     queryKey: "admin-stats",
     queryFn: async()=>{
-      const res = await axios.get('http://localhost:5000/admin-stats');
-      console.log(res.data);
+      const res = await axios.get('https://bistro-boss-server-brown-xi.vercel.app/admin-stats');
+      // console.log(res.data);
       return res.data;
+      //https://bistro-boss-server-brown-xi.vercel.app/
 
     }
   })

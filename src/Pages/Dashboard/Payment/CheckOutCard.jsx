@@ -78,7 +78,7 @@ const CheckOutCard = () => {
           status: "pending",
         };
         console.log(payment);
-        const res = await axios.post("http://localhost:5000/payment", payment);
+        const res = await axios.post("https://bistro-boss-server-brown-xi.vercel.app/payment", payment);
         console.log("payment client", res.data);
         refetch();
         navigate('/dashboard/paymentHistory')

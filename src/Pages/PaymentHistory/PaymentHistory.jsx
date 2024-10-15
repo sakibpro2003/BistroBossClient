@@ -11,7 +11,7 @@ const PaymentHistory = () => {
     queryKey: ["payments", user?.email],
 
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/payments/${user?.email}`);
+      const res = await axios.get(`https://bistro-boss-server-brown-xi.vercel.app/payments/${user?.email}`);
       console.log(res.data);
       return res.data;
     },

@@ -16,7 +16,7 @@ const UpdateItem = () => {
     };
     const update = async (data) => {
       axios
-        .patch(`http://localhost:5000/menu/${item._id}`, updateObj)
+        .patch(`https://bistro-boss-server-brown-xi.vercel.app/menu/${item._id}`, updateObj)
         .then((response) => {
           console.log(response);
         });
