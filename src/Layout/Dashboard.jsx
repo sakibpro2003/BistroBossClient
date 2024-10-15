@@ -16,7 +16,7 @@ const Dashboard = () => {
   //for admin turn this on-----------------------------
   // const [isAdmin] = useAdmin();
   //for normal user turn this on----------------------------
-  const isAdmin = false;
+  const isAdmin = true;
   const [cart] = useCart();
   return (
     <div className="flex">
@@ -25,7 +25,7 @@ const Dashboard = () => {
           {isAdmin ? (
             <>
               <li>
-                <NavLink to={"userHome"}>
+                <NavLink to={"admin-home"}>
                   <FaHome /> Admin Home
                 </NavLink>
               </li>
@@ -59,7 +59,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"userHome"}>
+                <NavLink to={"user-home"}>
                   <FaHome /> User Home
                 </NavLink>
               </li>

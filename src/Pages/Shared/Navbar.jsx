@@ -2,21 +2,28 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import useCart from "../../hooks/useCart";
+import useAdmin from "../../hooks/useAdmin";
 // import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
-  const {user,logOut} = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
+  console.log(isAdmin);
+  const { user, logOut } = useContext(AuthContext);
   const [cart] = useCart();
   // console.log("user 2",user)
   return (
-    <div
-      className="navbar absolute max-w-screen-xl mx-auto z-10 text-white bg-black bg-opacity-20"
-    >
+    <div className="navbar absolute max-w-screen-xl mx-auto z-10 text-white bg-black bg-opacity-20">
       <div className="flex-1">
         <a className="btn btn-ghost text-xl">daisyUI</a>
+
+        <Link to={'/dashboard/admin-home'} className="btn mr-4">Admin Dashboard</Link>
+
+        <Link to={'/dashboard/user-home'} className="btn">User Dashboard</Link>
       </div>
+
       <div className="flex-none">
         <div className="dropdown dropdown-end">
+          <div></div>
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <div className="indicator">
               <svg
@@ -33,7 +40,9 @@ const Navbar = () => {
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>
-              <span className="badge badge-sm indicator-item">{cart.length}</span>
+              <span className="badge badge-sm indicator-item">
+                {cart.length}
+              </span>
             </div>
           </div>
           <div
@@ -62,8 +71,7 @@ const Navbar = () => {
               />
             </div>
             <button>
-            <Link to={'dashboard/cart'}>Cart</Link>
-
+              <Link to={"dashboard/cart"}>Cart</Link>
             </button>
           </div>
           <ul
@@ -94,19 +102,23 @@ const Navbar = () => {
             <li>
               <a>Settings</a>
             </li>
-            
           </ul>
         </div>
       </div>
-          {
-            user ? <> <button onClick={()=>logOut()} className="btn">
+      {user ? (
+        <>
+          {" "}
+          <button onClick={() => logOut()} className="btn">
             Logout
-          </button></> : <>
+          </button>
+        </>
+      ) : (
+        <>
           <Link className="btn" to="/login">
             Login
           </Link>
-          </>
-          }
+        </>
+      )}
     </div>
   );
 };

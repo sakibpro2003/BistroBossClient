@@ -71,7 +71,8 @@ const CheckOutCard = () => {
         const payment = {
           email: user?.email,
           price: totalPrice,
-          date: new Date(), // date should be converted in UTC
+          date: new Date(), 
+          // TODO: Date should be converted in UTC
           cartIds: cart.map((item) => item._id),
           menuItemIds: cart.map((item) => item.menuId),
           status: "pending",
