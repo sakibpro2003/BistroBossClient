@@ -6,15 +6,12 @@ import useAdmin from "../../hooks/useAdmin";
 
 const Navbar = () => {
   const location = useLocation();
-  console.log(location)
   const [isAdmin] = useAdmin();
-  console.log(isAdmin);
+  // console.log(isAdmin);
   const { user, logOut } = useContext(AuthContext);
   const [cart] = useCart();
 
   const getLink = (path)=>{
-    console.log('pathname, ',location.pathname);
-    console.log('path',path);
     return location.pathname === path ? "text-yellow-400" : ' ';
   }
   return (
@@ -38,7 +35,7 @@ const Navbar = () => {
             <Link to={'/'} className={getLink('/contactus')}>Contact Us</Link>
             <Link to={'/'}>Dashboard</Link>
             <Link to={'/menu'} className={getLink('/menu')}>Our Menu</Link>
-            <Link to={'/order'}>Our Shop</Link>
+            <Link to={'/order'} className={getLink('/order')}>Our Shop</Link>
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <div className="indicator">
               <svg
