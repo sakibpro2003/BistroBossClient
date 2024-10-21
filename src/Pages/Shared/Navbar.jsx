@@ -14,11 +14,19 @@ const Navbar = () => {
   return (
     <div className="navbar absolute max-w-screen-xl mx-auto z-10 text-white bg-black bg-opacity-20">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        {/* <a className="btn btn-ghost text-xl">daisyUI</a> */}
+        <div className="uppercase">
+          <h3 className="text-2xl font-bold">Bistro Boss</h3>
+          <h5 className="font-bold">R e s t a u r a n t</h5>
+        </div>
 
-        <Link to={'/dashboard/admin-home'} className="btn mr-4">Admin Dashboard</Link>
+        <Link to={"/dashboard/admin-home"} className="btn mr-4">
+          Admin Dashboard
+        </Link>
 
-        <Link to={'/dashboard/user-home'} className="btn">User Dashboard</Link>
+        <Link to={"/dashboard/user-home"} className="btn">
+          User Dashboard
+        </Link>
       </div>
 
       <div className="flex-none">

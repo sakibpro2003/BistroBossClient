@@ -11,11 +11,10 @@ import { app } from "../Firebase/firebase.config";
 
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
-    const axiosPublic = useAxiosPublic();
+  const axiosPublic = useAxiosPublic();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const auth = getAuth(app);
-
 
   const signUp = (email, password) => {
     setLoading(true);
@@ -34,16 +33,14 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      if(currentUser){
-        const userEmail = {email: currentUser.email};
-        axiosPublic.post('/jwt',userEmail)
-        .then(res=>{
-            if(res.data.token){
-                localStorage.setItem('access-token',res.data.token);
-            }
-        })
-      }
-      else{
+      if (currentUser) {
+        const userEmail = { email: currentUser.email };
+        axiosPublic.post("/jwt", userEmail).then((res) => {
+          if (res.data.token) {
+            localStorage.setItem("access-token", res.data.token);
+          }
+        });
+      } else {
         localStorage.removeItem("access-token");
       }
       // console.log(currentUser);
