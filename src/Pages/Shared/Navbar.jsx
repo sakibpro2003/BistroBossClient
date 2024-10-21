@@ -1,38 +1,45 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import useCart from "../../hooks/useCart";
 import useAdmin from "../../hooks/useAdmin";
-// import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
+  const location = useLocation();
+  console.log(location)
   const [isAdmin] = useAdmin();
   console.log(isAdmin);
   const { user, logOut } = useContext(AuthContext);
   const [cart] = useCart();
-  // console.log("user 2",user)
+
+  const getLink = (path)=>{
+    console.log('pathname, ',location.pathname);
+    console.log('path',path);
+    return location.pathname === path ? "text-yellow-400" : ' ';
+  }
   return (
     <div className="navbar absolute max-w-screen-xl mx-auto z-10 text-white bg-black bg-opacity-20">
       <div className="flex-1">
-        {/* <a className="btn btn-ghost text-xl">daisyUI</a> */}
         <div className="uppercase">
           <h3 className="text-2xl font-bold">Bistro Boss</h3>
           <h5 className="font-bold">R e s t a u r a n t</h5>
         </div>
 
-        <Link to={"/dashboard/admin-home"} className="btn mr-4">
+        {/* <Link to={"/dashboard/admin-home"} className="">
           Admin Dashboard
         </Link>
 
-        <Link to={"/dashboard/user-home"} className="btn">
+        <Link to={"/dashboard/user-home"} className="">
           User Dashboard
-        </Link>
+        </Link> */}
       </div>
-
-      <div className="flex-none">
-        <div className="dropdown dropdown-end">
-          <div></div>
-          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+        <div className='flex gap-3 font-bold '>
+            <Link to={'/'} className={getLink('/')}>Home</Link>
+            <Link to={'/'} className={getLink('/contactus')}>Contact Us</Link>
+            <Link to={'/'}>Dashboard</Link>
+            <Link to={'/menu'} className={getLink('/menu')}>Our Menu</Link>
+            <Link to={'/order'}>Our Shop</Link>
+            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <div className="indicator">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -53,80 +60,39 @@ const Navbar = () => {
               </span>
             </div>
           </div>
+            </div>
+      <div className="flex-none">
+        <div className="dropdown dropdown-end">
+          {/* <div></div> */}
+          
           <div
             tabIndex={0}
             className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow"
-          >
-            <div className="card-body">
-              <span className="text-lg font-bold">8 Items</span>
-              {/* <span className="text-info">Subtotal: $999</span>
-              <div className="card-actions">
-                <button className="btn btn-primary btn-block">View cart</button>
-              </div> */}
-            </div>
-          </div>
+          ></div>
         </div>
-        <div className="dropdown dropdown-end">
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost btn-circle avatar"
-          >
-            <div className="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS Navbar component"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-              />
-            </div>
-            <button>
-              <Link to={"dashboard/cart"}>Cart</Link>
-            </button>
-          </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content text-black bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-          >
-            <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
-            </li>
-            <li>
-              <Link to={"/menu"}>Menu</Link>
-            </li>
-            <li>
-              <Link to={"/order"}>Order</Link>
-            </li>
-            <li>
-              <Link to={"/login"}>login</Link>
-            </li>
-            <li>
-              <Link to={"/register"}>register</Link>
-            </li>
-            <li>
-              <Link to={"/secret"}>sec</Link>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-          </ul>
-        </div>
+        
       </div>
+
       {user ? (
         <>
           {" "}
-          <button onClick={() => logOut()} className="btn">
+          <Link onClick={() => logOut()} className="btn">
             Logout
-          </button>
+          </Link>
         </>
       ) : (
         <>
-          <Link className="btn" to="/login">
+          <Link className="font-bold" to="/login">
             Login
           </Link>
         </>
       )}
+      <div className="w-10 rounded-md">
+        <img
+          alt="Tailwind CSS Navbar component"
+          src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+        />
+      </div>
     </div>
   );
 };
