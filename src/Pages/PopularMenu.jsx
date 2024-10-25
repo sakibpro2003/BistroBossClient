@@ -1,15 +1,16 @@
-import MenuItem from "./Shared/MenuItem/MenuItem";
+// import MenuItem from "./Shared/MenuItem/MenuItem";
 import useMenu from "../hooks/useMenu";
 
 const PopularMenu = () => {
     const [menu] = useMenu()
-            const popularMenu = menu.filter(item=> item.category ==='popular');
+            // const popularMenu = menu.filter(item=> item.category ==='popular');
+            // console.log(popularMenu)
    
     return (
         <div className="grid grid-cols-2">
             <p>popular menu</p>
             {
-                popularMenu.map(item=> <MenuItem key={item._id} item={item}></MenuItem>)
+                // popularMenu.map(item=> <MenuItem key={item._id} item={item}></MenuItem>)
             }
         </div>
     );
