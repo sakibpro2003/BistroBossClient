@@ -1,7 +1,10 @@
+import SectionTitle from "../assets/Components/SectionTitle";
 import feturedImg from "../assets/home/featured.jpg"
 const Featured = () => {
     return (
         <div className="bg-black text-white">
+        <SectionTitle subTitle={"Should Try"} sectionTitle={"Cheffs Recommends"}></SectionTitle>
+
             {/* <img className="" src={feturedImg} alt="" /> */}
             <div className="flex items-center relative">
                 <img className="w-1/2" src={feturedImg} alt="" />

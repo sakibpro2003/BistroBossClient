@@ -17,7 +17,7 @@ const Home = () => {
             <CallUs></CallUs>
             <CheffRecommends></CheffRecommends>
             <Featured></Featured>
-            {/* <Testimonials></Testimonials> */}
+            <Testimonials></Testimonials>
         </div>
     );
 };
