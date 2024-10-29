@@ -18,6 +18,7 @@ import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../Pages/PaymentHistory/PaymentHistory";
 import AdminHome from "../Pages/AdminHome/AdminHome";
 import UserHome from "../UserHome/UserHome";
+import OurMenu from "../OurMenu/OurMenu";
 
 export const router = createBrowserRouter([
   {
@@ -28,7 +29,11 @@ export const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
-      
+      {
+        path: "ourmenu",
+        element: <OurMenu></OurMenu>,
+      },
+
       {
         path: "/menu",
         element: <Menu />,
@@ -51,7 +56,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/secret",
-        element: <PrivateRoute><Secret/></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Secret />
+          </PrivateRoute>
+        ),
       },
     ],
   },
@@ -69,29 +78,41 @@ export const router = createBrowserRouter([
       },
       {
         path: "additem",
-        element: <AdminRoute><AddItem></AddItem></AdminRoute>
+        element: (
+          <AdminRoute>
+            <AddItem></AddItem>
+          </AdminRoute>
+        ),
       },
       {
         path: "paymentHistory",
-        element: <PaymentHistory></PaymentHistory>
+        element: <PaymentHistory></PaymentHistory>,
       },
+
       {
         path: "manageitems",
-        element: <ManageItem></ManageItem>
+        element: <ManageItem></ManageItem>,
       },
       {
         path: "admin-home",
-        element: <AdminHome/>
+        element: <AdminHome />,
       },
       {
         path: "item/:id",
         element: <UpdateItem></UpdateItem>,
-        loader: ({params})=> fetch(`https://bistro-boss-server-brown-xi.vercel.app/menu/${params.id}`),
+        loader: ({ params }) =>
+          fetch(
+            `https://bistro-boss-server-brown-xi.vercel.app/menu/${params.id}`
+          ),
       },
       {
-        path:"users",
-        element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
-      }
+        path: "users",
+        element: (
+          <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
+      },
     ],
   },
 ]);

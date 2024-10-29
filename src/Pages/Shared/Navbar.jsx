@@ -34,7 +34,7 @@ const Navbar = () => {
             <Link to={'/'} className={getLink('/')}>Home</Link>
             <Link to={'/'} className={getLink('/contactus')}>Contact Us</Link>
             <Link to={'/'}>Dashboard</Link>
-            <Link to={'/menu'} className={getLink('/menu')}>Our Menu</Link>
+            <Link to={'/ourmenu'} className={getLink('/ourmenu')}>Our Menu</Link>
             <Link to={'/order'} className={getLink('/order')}>Our Shop</Link>
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <div className="indicator">

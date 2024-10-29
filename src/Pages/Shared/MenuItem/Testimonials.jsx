@@ -22,7 +22,7 @@ const Testimonials = () => {
         subTitle={"What Our Client Say"}
         sectionTitle={"TESTIMONIAL"}
       ></SectionTitle>
-      <div className="rating text-center flex justify-center" >
+      <div className="rating text-center flex justify-center">
         <input
           type="radio"
           name="rating-2"
@@ -57,11 +57,6 @@ const Testimonials = () => {
             <div className="m-24">
               <p>{review.details}</p>
               <h2 className="text-3xl text-orange-600">{review.name}</h2>
-              {/* <Rating
-                style={{ maxWidth: 180 }}
-                value={review.rating}
-                // onChange={setRating}
-              /> */}
             </div>
           </SwiperSlide>
         ))}
