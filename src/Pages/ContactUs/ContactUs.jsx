@@ -1,5 +1,3 @@
-import React from "react";
-import ShortMenu from "../../assets/Components/ShortMenu";
 import OurMenuBanner from "../../assets/Components/OurMenuBanner";
 import SectionTitle from "../../assets/Components/SectionTitle";
 import ContactMethodCard from "./ContactMethodCard";
