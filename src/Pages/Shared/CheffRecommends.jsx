@@ -1,13 +1,9 @@
-import React from "react";
 import useMenu from "../../hooks/useMenu";
-import SectionHeader from "../../assets/Components/SectionHeader";
 import SectionTitle from "../../assets/Components/SectionTitle";
-// import SectionTitle from "./SectionTitle";
 
 const CheffRecommends = () => {
   const [menuItems, isLoading] = useMenu();
 
-  console.log(menuItems);
   return (
     <div className="text-center">
         <SectionTitle subTitle={"Should Try"} sectionTitle={"Cheffs Recommends"}></SectionTitle>

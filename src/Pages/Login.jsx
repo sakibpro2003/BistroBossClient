@@ -14,7 +14,7 @@ const Login = () => {
     // console.log(email, password);
     signIn(email, password)
     .then(user=>{
-      // console.log(user);
+      console.log(user);
       // navigate("/");
       navigate(from,{replace:true});
 

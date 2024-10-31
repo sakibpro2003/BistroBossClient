@@ -5,7 +5,7 @@ import {
 import useAuth from './useAuth';
 const useAdmin = () => {
 
-    const {user} = useAuth();
+    const {user, loading} = useAuth();
     // console.log(user?.email)
     const axiosSecure = useAxiosSecure();
 
@@ -13,6 +13,7 @@ const useAdmin = () => {
     //caution: isAdmin is temporaryly true!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     const {data: isAdmin=true,isPending: isAdminLoading}  = useQuery({
         queryKey:[user?.email,"isAdmin"],
+        enabled: !loading,
         queryFn:async()=>{
             const res = await axiosSecure.get(`/users/admin/${user.email}`)
             // console.log(res.data?.admin);

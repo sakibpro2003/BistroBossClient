@@ -28,7 +28,7 @@ const Register = () => {
       fullName: name,
     };
     // console.log("user object",userInfo)
-    axios.post("https://bistro-boss-server-brown-xi.vercel.app/userdata", userInfo).then((res) => {
+    axios.post("http://localhost:5000/userdata", userInfo).then((res) => {
       // console.log(res.data);
     });
   };
