@@ -19,6 +19,7 @@ import PaymentHistory from "../Pages/PaymentHistory/PaymentHistory";
 import AdminHome from "../Pages/AdminHome/AdminHome";
 import UserHome from "../UserHome/UserHome";
 import OurMenu from "../OurMenu/OurMenu";
+import ContactUs from "../Pages/ContactUs/ContactUs";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: "ourmenu",
         element: <OurMenu></OurMenu>,
+      },
+      {
+        path: "contactus",
+        element: <ContactUs></ContactUs>,
       },
 
       {

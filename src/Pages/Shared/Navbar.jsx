@@ -32,7 +32,7 @@ const Navbar = () => {
       </div>
         <div className='flex gap-3 font-bold '>
             <Link to={'/'} className={getLink('/')}>Home</Link>
-            <Link to={'/'} className={getLink('/contactus')}>Contact Us</Link>
+            <Link to={'/contactus'} className={getLink('/contactus')}>Contact Us</Link>
             <Link to={'/'}>Dashboard</Link>
             <Link to={'/ourmenu'} className={getLink('/ourmenu')}>Our Menu</Link>
             <Link to={'/order'} className={getLink('/order')}>Our Shop</Link>
